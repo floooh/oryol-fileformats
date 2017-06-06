@@ -61,6 +61,7 @@ struct OrbHeader {
     uint32_t StringPoolDataOffset;
     uint32_t StringPoolDataSize;
 };
+
 enum class OrbVertexAttr : uint32_t {
     Invalid = 0,
     Position,
@@ -76,6 +77,7 @@ enum class OrbVertexAttr : uint32_t {
     Color0,
     Color1,
 };
+
 enum class OrbVertexFormat : uint32_t {
     Invalid = 0,
     Float,
@@ -91,19 +93,23 @@ enum class OrbVertexFormat : uint32_t {
     Short4,
     Short4N
 };
+
 struct OrbVertexComponent {
     OrbVertexAttr Attr = OrbVertexAttr::Invalid;
     OrbVertexFormat Format = OrbVertexFormat::Invalid;
 };
+
 struct OrbValueProperty {
     uint32_t Name;
     uint32_t ValueIndex;        // index(!) of float value in value pool
     uint32_t NumValues;         // 1..4 (for float, vec2, vec3, vec4)
 };
+
 struct OrbTextureProperty {
     uint32_t Name;
     uint32_t Location;          // string pool
 };
+
 struct OrbMaterial {
     uint32_t Name;
     uint32_t Shader;
@@ -112,6 +118,7 @@ struct OrbMaterial {
     uint32_t FirstTextureProp;
     uint32_t NumTextureProps;
 };
+
 struct OrbMesh {
     uint32_t Material;
     uint32_t FirstVertex;
@@ -120,6 +127,7 @@ struct OrbMesh {
     uint32_t NumIndices;
     float Size[3];
 };
+
 struct OrbBone {
     uint32_t Name;
     int32_t Parent;
@@ -127,6 +135,7 @@ struct OrbBone {
     float PoseScaling[3];
     float PoseRotate[4];
 };
+
 struct OrbNode {
     uint32_t Name;
     int32_t Parent;
