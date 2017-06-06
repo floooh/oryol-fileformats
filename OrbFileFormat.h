@@ -62,52 +62,56 @@ struct OrbHeader {
     uint32_t StringPoolDataSize;
 };
 
-enum class OrbVertexAttr : uint32_t {
-    Invalid = 0,
-    Position,
-    Normal,
-    TexCoord0,
-    TexCoord1,
-    TexCoord2,
-    TexCoord3,
-    Tangent,
-    Binormal,
-    Weights,
-    Indices,
-    Color0,
-    Color1,
+struct OrbVertexAttr {
+    enum Enum {
+        Invalid = 0,
+        Position,
+        Normal,
+        TexCoord0,
+        TexCoord1,
+        TexCoord2,
+        TexCoord3,
+        Tangent,
+        Binormal,
+        Weights,
+        Indices,
+        Color0,
+        Color1,
+    };
 };
 
-enum class OrbVertexFormat : uint32_t {
-    Invalid = 0,
-    Float,
-    Float2,
-    Float3,
-    Float4,
-    Byte4,
-    Byte4N,
-    UByte4,
-    UByte4N,
-    Short2,
-    Short2N,
-    Short4,
-    Short4N
+struct OrbVertexFormat {
+    enum Enum {
+        Invalid = 0,
+        Float,
+        Float2,
+        Float3,
+        Float4,
+        Byte4,
+        Byte4N,
+        UByte4,
+        UByte4N,
+        Short2,
+        Short2N,
+        Short4,
+        Short4N
+    };
 };
 
 struct OrbVertexComponent {
-    OrbVertexAttr Attr = OrbVertexAttr::Invalid;
-    OrbVertexFormat Format = OrbVertexFormat::Invalid;
+    uint32_t Attr = OrbVertexAttr::Invalid;
+    uint32_t Format = OrbVertexFormat::Invalid;
 };
 
 struct OrbValueProperty {
     uint32_t Name;
-    uint32_t ValueIndex;        // index(!) of float value in value pool
+    uint32_t FirstValue;        // index(!) of float value in value pool
     uint32_t NumValues;         // 1..4 (for float, vec2, vec3, vec4)
 };
 
 struct OrbTextureProperty {
     uint32_t Name;
-    uint32_t Location;          // string pool
+    uint32_t Location;
 };
 
 struct OrbMaterial {
@@ -146,13 +150,19 @@ struct OrbNode {
     float Rotate[4];
 };
 
-enum class OrbAnimKeyFormat : uint32_t {
-    Invalid = 0,
-    Float,
-    Float2,
-    Float3,
-    Float4,
-    Quaternion,
+struct OrbAnimKeyFormat {
+    enum Enum {
+        Invalid = 0,
+        Float,
+        Float2,
+        Float3,
+        Float4,
+        Quaternion,
+    };
+};
+
+struct OrbAnimKeyComponent {
+    uint32_t KeyFormat;
 };
 
 struct OrbAnimCurve {
