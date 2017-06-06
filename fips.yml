@@ -1,0 +1,7 @@
+#
+# oryol-fileformats
+#
+---
+exports:
+    header-dirs: [ . ]
+
