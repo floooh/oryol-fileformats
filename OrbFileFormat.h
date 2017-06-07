@@ -17,7 +17,6 @@
     0..N OrbAnimKeyFormat
     0..N OrbAnimCurve
     0..N OrbAnimClip
-    ValuePropData
     VertexData
     IndexData           (padded to multiple of 4)
     AnimData
@@ -50,8 +49,6 @@ struct OrbHeader {
     uint32_t NumAnimCurves;
     uint32_t AnimClipOffset;
     uint32_t NumAnimClips;
-    uint32_t ValuePoolOffset;
-    uint32_t ValuePoolSize;
     uint32_t VertexDataOffset;
     uint32_t VertexDataSize;
     uint32_t IndexDataOffset;
@@ -105,8 +102,8 @@ struct OrbVertexComponent {
 
 struct OrbValueProperty {
     uint32_t Name;
-    uint32_t FirstValue;        // index(!) of float value in value pool
-    uint32_t NumValues;         // 1..4 (for float, vec2, vec3, vec4)
+    uint32_t Dim;       // 1, 2, 3 or 4 
+    float Value[4];
 };
 
 struct OrbTextureProperty {
@@ -118,7 +115,7 @@ struct OrbMaterial {
     uint32_t Name;
     uint32_t Shader;
     uint32_t FirstValueProp;
-    uint32_t NumValueProp;
+    uint32_t NumValueProps;
     uint32_t FirstTextureProp;
     uint32_t NumTextureProps;
 };
@@ -135,9 +132,9 @@ struct OrbMesh {
 struct OrbBone {
     uint32_t Name;
     int32_t Parent;
-    float PoseTranslate[3];
-    float PoseScaling[3];
-    float PoseRotate[4];
+    float Translate[3];
+    float Scale[3];
+    float Rotate[4];
 };
 
 struct OrbNode {
@@ -146,7 +143,7 @@ struct OrbNode {
     uint32_t FirstMesh;
     uint32_t NumMeshes;
     float Translate[3];
-    float Scaling[3];
+    float Scale[3];
     float Rotate[4];
 };
 
