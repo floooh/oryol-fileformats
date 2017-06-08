@@ -96,8 +96,8 @@ struct OrbVertexFormat {
 };
 
 struct OrbVertexComponent {
-    uint32_t Attr = OrbVertexAttr::Invalid;
-    uint32_t Format = OrbVertexFormat::Invalid;
+    uint32_t Attr;
+    uint32_t Format;
 };
 
 struct OrbValueProperty {
