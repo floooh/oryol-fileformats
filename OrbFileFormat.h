@@ -163,7 +163,7 @@ struct OrbAnimKeyComponent {
 };
 
 struct OrbAnimCurve {
-    int32_t KeyOffset;  // -1 if the curve is statis
+    int32_t KeyOffset;  // -1 if the curve is static
     float StaticKey[4];
 };
 
