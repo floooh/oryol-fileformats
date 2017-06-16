@@ -170,6 +170,7 @@ struct OrbAnimCurve {
 struct OrbAnimClip {
     uint32_t Name;
     float KeyDuration;
+    uint32_t Length;        // num keys in a non-static curve, 0 if all curves static
     uint32_t FirstCurve;
     uint32_t NumCurves;
 };
