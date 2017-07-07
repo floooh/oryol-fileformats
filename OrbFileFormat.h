@@ -57,6 +57,8 @@ struct OrbHeader {
     uint32_t AnimKeyDataSize;
     uint32_t StringPoolDataOffset;
     uint32_t StringPoolDataSize;
+    float VertexMagnitude[3];   // magnitude of vertex positions for packed positions
+    // FIXME: uv coordinate magnitudes
 };
 
 struct OrbVertexAttr {
@@ -126,7 +128,6 @@ struct OrbMesh {
     uint32_t NumVertices;
     uint32_t FirstIndex;
     uint32_t NumIndices;
-    float Size[3];
 };
 
 struct OrbBone {
